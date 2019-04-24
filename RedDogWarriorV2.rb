@@ -161,22 +161,23 @@ class Race < Location
 end
 
 race1 = Race.new("Shit Kicker Stakes")
-# race2 = Race.new("")
-# race3 = Race.new()
-# race4 = Race.new()
-# race5 = Race.new()
-# race6 = Race.new()
-# race7 = Race.new()
-# race8 = Race.new()
+race2 = Race.new("Maiden Plate")
+race3 = Race.new("Grade 1")
+race4 = Race.new("Grade 2")
+race5 = Race.new("Grade 3")
+race6 = Race.new("Champions Cup")
+race7 = Race.new("You Wish You Were")
+race8 = Race.new("They just need wins")
 
 
 ########## User Class ##########
 class User
     attr_reader(:name)
-    attr_accessor(:score)
+    attr_accessor(:score, :current_dog)
     def initialize(name)
         @name = name
         @score = 0
+        @current_dog = nil
     end
 end
 
@@ -198,7 +199,8 @@ end
 ########## Race Decider Method ##########
 
 
-def race_decider(race)
+def race_decider(user,race)
+
     dog_names = []
     new_rand = Random.new()
     
@@ -212,34 +214,50 @@ def race_decider(race)
     first_place = dog_names[first_place_index]
     
     puts "And we have #{first_place} in first place!"
-    
-    dog_names.each do |name|
-        if name = first_place
-            dog_names.delete(name)
-        end
-    end
+
+    # dog_names.each do |name|
+    #     if name == first_place
+    #         dog_names.delete(name)
+    #     end
+    # end
+
+    dog_names.delete(first_place)
 
     second_place_index = new_rand.rand(0..dog_names.length-1)
     second_place = dog_names[second_place_index]
 
     puts "#{second_place} in second place!"
 
-    dog_names.each do |name|
-        if name = second_place
-            dog_names.delete(name)
-        end
-    end
+    dog_names.delete(second_place)
 
     third_place_index = new_rand.rand(0..dog_names.length-1)
     third_place = dog_names[third_place_index]
 
     puts "And #{third_place} finished third!"
 
-    dog_names.each do |name|
-        if name = third_place
-            dog_names.delete(name)
-        end
+    dog_names.delete(third_place)
+    # puts
+    # puts("KKKKKKKKKKKKK")
+    # puts "USER dog is: #{user.current_dog.name}"
+    # puts
+    # puts first_place
+    # puts second_place
+    # puts third_place
+    # puts "ZZZZZZZZZZZZ"
+    # puts
+    if (user.current_dog.name == first_place)
+        user.score += 15
+        puts "You're score is now #{user.score}"
+    elsif (user.current_dog.name == second_place)
+        user.score += 7
+        puts "You're score is now #{user.score}"
+    elsif (user.current_dog.name == third_place)
+        user.score += 3
+        puts "You're score is now #{user.score}"
+    elsif 
+        puts "You did not score points!"
     end
+
 end
 
 ########## Location Selector Method ##########
@@ -249,12 +267,15 @@ def location_selector
     loc_sel = gets().strip
     if loc_sel.to_i == 1
         puts "You're off to Mandurah!"
+        sleep(1)
     elsif loc_sel == String
         puts "Please select a valid number!"
-        loop location_selector
+        sleep(1)
+    location_selector
     elsif loc_sel.to_i != 1
         puts "Please select a valid number!"
-        loop location_selector
+        sleep(1)
+        location_selector
     end
 end
 
@@ -272,19 +293,23 @@ def display_dogs(race)
     puts "8. #{race.race_num_arr[7].name} (#{race.race_num_arr[7].strength})"
 end
 
+########## 
+
+
 ########## User Selection Method ##########
 
-def user_selection(race)
-   dog_sel = gets().strip 
+def user_selection(user,race)
+   dog_sel = gets().strip.to_i
+    user.current_dog = race.race_num_arr[dog_sel-1]
     if dog_sel == String
         puts "Please select a valid number!"
-        loop user_selection(race)
+    user_selection(race)
     elsif dog_sel.to_i >= 9
         puts "Please select a valid number!"
-        loop user_selection(race)
+    user_selection(race)
     elsif dog_sel.to_i <= 0
         puts "Please select a valid number!"
-        loop user_selection(race)
+    user_selection(race)
     elsif dog_sel.to_i == 1
         puts "You've selected #{race.race_num_arr[0].name}!"
     elsif dog_sel.to_i == 2
@@ -305,6 +330,7 @@ def user_selection(race)
 end
 
 ########## User Score Update ##########
+
 
 ############################################### DO NOT BREAK ABOVE ####################################################
 
@@ -333,6 +359,71 @@ fill_race(race_dogs_array, race1)
 
 display_dogs(race1)
 
-user_selection(race1)
+user_selection(user1,race1)
 
-race_decider(race1)
+# p(user1.current_dog)
+
+race_decider(user1,race1)
+
+# puts(user1.score)
+###### RACE 2 ######
+fill_race(race_dogs_array,race2)
+
+display_dogs(race2)
+
+user_selection(user1,race2)
+
+race_decider(user1,race2)
+###### RACE 3 ######
+fill_race(race_dogs_array,race3)
+
+display_dogs(race3)
+
+user_selection(user1,race3)
+
+race_decider(user1,race3)
+###### RACE 4 ######
+fill_race(race_dogs_array,race4)
+
+display_dogs(race4)
+
+user_selection(user1,race4)
+
+race_decider(user1,race4)
+###### RACE 5 ######
+fill_race(race_dogs_array,race5)
+
+display_dogs(race5)
+
+user_selection(user1,race5)
+
+race_decider(user1,race5)
+###### RACE 6 ######
+fill_race(race_dogs_array,race6)
+
+display_dogs(race6)
+
+user_selection(user1,race6)
+
+race_decider(user1,race6)
+###### RACE 7 ######
+fill_race(race_dogs_array,race7)
+
+display_dogs(race7)
+
+user_selection(user1,race7)
+
+race_decider(user1,race7)
+###### RACE 8 ######
+fill_race(race_dogs_array,race8)
+
+display_dogs(race8)
+
+user_selection(user1,race8)
+
+race_decider(user1,race8)
+
+puts
+puts
+puts
+puts("YOUR FINAL USER SCORE IS #{user1.score}")
