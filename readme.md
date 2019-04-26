@@ -1,6 +1,6 @@
 # Terminal App: Red Dog Warrior
 A greyhound simulation app!
-## PURPOSE:
+## Purpose:
 Made for the man that enjoys the average punt or thrill of a race, RedDogWarrior emulates the feeling of TAB’s trackside, without having to gamble actual money, whilst still feeling the reward of picking a winner.
 
 Made for the average punter, Red Dog Warrior (RDW) is designed to emulate the feeling of picking a winner, using real life greyhound names! Under RDW’s current scope as an minimum viable product (MVP), its primary purpose for the user is for them to score the highest possible score from the 8 races (the max score being 120 points in the MVP). 
@@ -16,7 +16,10 @@ The Ruby gems _____________ are required to run RedDogWarrior.
 
 ## Instructions for Use:
 Open Terminal or preferred console. To intialise program, enter:
+
+``` ruby
 $ ruby RedDogWarriorV2.rb
+```
 
 ![alt text](https://i.imgur.com/BhmexS4.png "User Flow Diagram")
 
@@ -36,7 +39,7 @@ Trello was used and allowed us to designate which members would take part in eac
 ## Project Plan & Timeline:
 The build time allocated to RDW’s development was two days. After establishing the idea for RDW our first step was to establish the methods we’d need to put out an MVP. The methods we choose we would need were: a race decider (randomly selecting 1st, 2nd and 3rd), a race filler (putting the dogs from an array into each races at a location) and a method to calculate the users score. 
 
-![alt text](https://i.imgur.com/rCgElxB.png "Slack communication example")
+![alt text](https://i.imgur.com/gWf4pVw.jpg "Planning of our MVP requirements")
 
 Due to the minimal time we had, we decided that these three functions were key to creating the product. We also outlined enhancements that we believed would be well suited to the app. 
 
