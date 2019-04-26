@@ -12,7 +12,7 @@ In the background, RDW will randomise a first placed, second placed and third pl
 As the user progresses through the session, their points are tallied up and presented to them once all the races at one location finish. 
 
 ## Dependencies: 
-The Ruby gems _____________ are required to run RedDogWarrior.
+The Ruby gems colorize and artii are required to run RedDogWarrior. To install the gems simply input gem install "gem" name into the console. The ruby file contains require to ensure these gems run.
 
 ## Instructions for Use:
 Open Terminal or preferred console. To intialise program, enter:
