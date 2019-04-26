@@ -8,7 +8,7 @@ class RaceDog
     end
 end
 
-dog1 = RaceDog.new("Oriental Owen", 100)
+dog1 = RaceDog.new("Oriental Owen", 1000)
 dog2 = RaceDog.new("Burn The Jetts", 98)
 dog3 = RaceDog.new("Quares Emma", 100)
 dog4 = RaceDog.new("Go Slow Goldy", 85)
@@ -329,7 +329,8 @@ def user_selection(user,race)
     end
 end
 
-########## User Score Update ##########
+########## Odds Calculated ##########
+
 
 
 ############################################### DO NOT BREAK ABOVE ####################################################
@@ -342,13 +343,12 @@ puts "Welcome to Red Dog Warrior!"
 puts "What is your name?"
 user1 = User.new(gets().strip.capitalize)
 
-# p user1
 puts
 puts "This is a greyhound racing simulation game! You'll be prompted to select go to a location on the, once you arrive at your location, the races will begin"
 puts
 puts "Before each race starts, you'll be shown the dogs racing in each race and their odds! You must choose only one dog that you think will win that race!"
 puts
-puts "If your dog finishes 1st, you'll recieve with 10 points, if your dog finishes 2nd, you'll recieve 5 points, if your dog finishes 3rd, you'll recieve with 3 points."
+puts "If your dog finishes 1st, you'll recieve with 15 points, if your dog finishes 2nd, you'll recieve 7 points, if your dog finishes 3rd, you'll recieve with 3 points."
 puts
 
 puts "Here are the current locations available to you:
@@ -357,15 +357,14 @@ location_selector
 
 fill_race(race_dogs_array, race1)
 
+# p race1.race_num_arr
+
 display_dogs(race1)
 
 user_selection(user1,race1)
 
-# p(user1.current_dog)
-
 race_decider(user1,race1)
 
-# puts(user1.score)
 ###### RACE 2 ######
 fill_race(race_dogs_array,race2)
 
